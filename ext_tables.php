@@ -103,4 +103,8 @@ $ttContentColumns = array(
 	),
 );
 t3lib_div::loadTCA('tt_content');
-t3lib_extMgm::addTCAcolumns('tt_content', $ttContentColumns, 1);
+if (version_compare(TYPO3_branch, '6.2', '<')) {
+	t3lib_extMgm::addTCAcolumns('tt_content', $ttContentColumns, 1);
+} else {
+	t3lib_extMgm::addTCAcolumns('tt_content', $ttContentColumns);
+}
